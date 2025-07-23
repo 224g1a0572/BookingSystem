@@ -97,7 +97,8 @@ def confirm():
     }
 
     # Insert into SQLite
-    conn = sqlite3.connect('bookings.db')
+    # conn = sqlite3.connect('bookings.db')
+    conn = sqlite3.connect('database.db')  
     c = conn.cursor()
     c.execute('''
         INSERT INTO bookings (name, phone, movie, theater, timing, date, persons, seats)
@@ -110,7 +111,8 @@ def confirm():
     return render_template("confirmation.html", booking=booking)
 @app.route("/admin/bookings")
 def view_bookings():
-    conn = sqlite3.connect('bookings.db')
+    # conn = sqlite3.connect('bookings.db')
+    conn = sqlite3.connect('database.db')  
     c = conn.cursor()
     c.execute("SELECT * FROM bookings")
     rows = c.fetchall()
